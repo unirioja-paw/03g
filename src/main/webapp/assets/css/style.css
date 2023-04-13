@@ -1,0 +1,71 @@
+body {
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3 {
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+}
+h1 {
+    margin: 20px 0 10px 10px;
+}
+.menu {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 20px;
+}
+
+.menu div {
+    padding: 20px;
+    background-color: #e7e6f1;
+}
+
+.menu .aviso {
+    color: #bf102e;
+    background-color: #ffd5cd;
+    grid-column: span 10;
+}
+
+.menu .ejemplo {
+    grid-column: span 2;
+}
+
+.menu .ejemplo.ext {
+    grid-column: span 4;
+}
+
+.menu .ejemplo.horas {
+    grid-column: span 5;
+}
+
+.menu .ejemplo.numeros {
+    grid-column: span 10;
+}
+
+.menu .ejemplo.row {
+    grid-column: span 10;
+}
+
+ul {
+    padding-left: 15px;
+}
+a {
+    text-decoration: none;
+    color: #514b8f;
+    font-weight: 600;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.app-badge {
+    padding: 10px;
+    background-color: #374f73;
+    color: white;
+    font-weight: bold;
+    font-size: 11px;
+}
