@@ -1,6 +1,7 @@
 package es.unirioja.filter;
 
 import java.io.IOException;
+import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -9,15 +10,14 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-/**
- * Ejemplo de filtro con anotacion @WebFilter. No se define en web.xml
- *
- * Prueba a generar un Filter desde NetBeans sin marcar la opcion "Add
- * information to deployment descriptor (web.xml)"
- */
-//@WebFilter(filterName = "SimpleAnnotatedFilter", urlPatterns = {"/*"})
-public class SimpleAnnotatedFilter implements Filter {
+@WebFilter(filterName = "ForwardLoggingFilter", urlPatterns = {"/*"}, dispatcherTypes = DispatcherType.FORWARD)
+public class ForwardLoggingFilter implements Filter {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private ServletContext context;
 
@@ -27,15 +27,12 @@ public class SimpleAnnotatedFilter implements Filter {
             ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
+        logger.info("DispatcherType: {}", request.getDispatcherType());
 
-
-        //  BeforeProcessing
-        log("preproceso");
+        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        logger.info("RequestURI: {}", httpServletRequest.getRequestURI());
 
         chain.doFilter(request, response);
-
-        // AfterProcessing
-        log("postproceso");
 
     }
 
@@ -46,10 +43,6 @@ public class SimpleAnnotatedFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) {
         this.context = filterConfig.getServletContext();
-    }
-
-    public void log(String msg) {
-        context.log(String.format("%s: %s", this.getClass().toString(), msg));
     }
 
 }

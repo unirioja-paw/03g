@@ -35,6 +35,7 @@ public class TiempoRespuesta implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         long timeElapsed = end - start;
         log("Tiempo peticion " + httpServletRequest.getRequestURI() + ": " + timeElapsed);
+        // TODO: que unidad de medida tiene este valor?
 
         // y lo ponemos en cabecera de respuesta
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
