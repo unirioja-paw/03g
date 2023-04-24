@@ -13,7 +13,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-//@WebFilter(filterName = "RequestCounter", urlPatterns = {"/*"})
+@WebFilter(filterName = "RequestCounter", urlPatterns = {"/*"})
 public class RequestCounterFilter implements Filter {
 
     private final String STATS_KEY = "request_stats_counter";

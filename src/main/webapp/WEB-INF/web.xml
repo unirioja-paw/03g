@@ -59,7 +59,7 @@
        
     
     <!-- Filtros disponibles en Tomcat -->
-    <!--        <filter>
+    <filter>
         <filter-name>requestdumper</filter-name>
         <filter-class>
             org.apache.catalina.filters.RequestDumperFilter
@@ -68,7 +68,7 @@
     <filter-mapping>
         <filter-name>requestdumper</filter-name>
         <url-pattern>*</url-pattern>
-    </filter-mapping>-->
+    </filter-mapping>
     
     
     <servlet>
